@@ -1,0 +1,26 @@
+// Write a Java program to find the smallest and largest element in an array.
+public class Main
+{
+    static void smallArray(int array[])
+    {
+        int small = array[0], large = 0;
+        for(int i : array)
+        {
+            if(i<small)
+            {
+                small=i;
+            }
+            if(i>large)
+            {
+                large=i;
+            }
+        }
+        System.out.println("smallest number "+small);
+        System.out.println("largest number "+large);
+    }
+	public static void main(String[] args) {
+	
+		int arr[] = {3,4,13,11,5,6,7,88,9,10};
+		smallArray(arr);
+	}
+}
