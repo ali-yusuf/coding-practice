@@ -1,0 +1,94 @@
+// Transpose of a Matrix: Write a program to find the transpose of a given matrix. The input will be a matrix, and the output should be the transpose of that matrix.
+
+import java.util.Scanner;
+
+public class MatrixTranspose {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get matrix dimensions
+        System.out.print("Enter number of rows in matrix: ");
+        int rows = scanner.nextInt();
+        System.out.print("Enter number of columns in matrix: ");
+        int columns = scanner.nextInt();
+
+        // Initialize matrix
+        int[][] matrix = new int[rows][columns];
+
+        // Get matrix elements
+        System.out.println("Enter matrix elements:");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                matrix[i][j] = scanner.nextInt();
+            }
+        }
+
+        // Find transpose of matrix
+        int[][] transpose = new int[columns][rows];
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                transpose[j][i] = matrix[i][j];
+            }
+        }
+
+        // Print transpose of matrix
+        System.out.println("Transpose of matrix:");
+        for (int i = 0; i < columns; i++) {
+            for (int j = 0; j < rows; j++) {
+                System.out.print(transpose[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        scanner.close();
+    }
+}
+
+// Transpose of a Matrix: Write a program to find the transpose of a given matrix. The input will be a matrix, and the output should be the transpose of that matrix.
+
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        int[][] matrix = {{1, 2, 3, 4},
+                           {4, 5, 6, 5},
+                           {7, 8, 9, 6},
+                           {2, 6, 10, 8},
+                            {1, 2, 3, 4},
+                            {1, 2, 3, 4}
+        };
+        int[][] result = Transpose(matrix);
+        int cols = result[0].length;
+        int rows = result.length;
+        if(result!=null)
+        {
+        System.out.println("Resultant Matrix:\n"+"rows : "+rows+"\n" + "cols: "+cols+"\n");
+        
+       for(int i=0;i<result.length;i++)
+       {
+           for(int j=0;j<result[0].length;j++)
+        {
+        System.out.print(result[i][j]+"  ");
+        }
+         System.out.println();
+        }
+        }else{
+            System.out.println("transpose is not possible.");
+        }
+    }
+
+    public static int[][] Transpose(int[][] matrix) {
+        int rows = matrix.length;
+        int columns = matrix[0].length;
+
+        // Find transpose of matrix
+        int[][] result = new int[columns][rows];
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                result[j][i] = matrix[i][j];
+            }
+        }
+        return result;
+    }
+}
+

@@ -1,0 +1,74 @@
+// Matrix Rotation: Write a program to rotate a given matrix by 90 degrees in clockwise or anti-clockwise direction. The input will be a matrix and the rotation direction, and the output should be the resulting matrix after rotation.
+
+import java.util.Scanner;
+
+public class MatrixRotation {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get matrix dimensions from user
+        System.out.print("Enter number of rows in the matrix: ");
+        int rows = scanner.nextInt();
+        System.out.print("Enter number of columns in the matrix: ");
+        int cols = scanner.nextInt();
+
+        int[][] matrix = new int[rows][cols];
+
+        // Get matrix elements from user
+        System.out.println("Enter matrix elements:");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                System.out.print("Enter element at position [" + i + "][" + j + "]: ");
+                matrix[i][j] = scanner.nextInt();
+            }
+        }
+
+        // Get rotation direction from user
+        System.out.print("Enter rotation direction (clockwise or anti-clockwise): ");
+        String rotationDirection = scanner.next();
+
+        // Rotate the matrix
+        int[][] rotatedMatrix = rotateMatrix(matrix, rotationDirection);
+
+        // Print the rotated matrix
+        System.out.println("Rotated matrix:");
+        printMatrix(rotatedMatrix);
+    }
+
+    public static int[][] rotateMatrix(int[][] matrix, String rotationDirection) {
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+        int[][] rotatedMatrix = new int[cols][rows];
+
+        if (rotationDirection.equalsIgnoreCase("clockwise")) {
+            for (int i = 0; i < rows; i++) {
+                for (int j = 0; j < cols; j++) {
+                    rotatedMatrix[j][rows - 1 - i] = matrix[i][j];
+                }
+            }
+        } else if (rotationDirection.equalsIgnoreCase("anti-clockwise")) {
+            for (int i = 0; i < rows; i++) {
+                for (int j = 0; j < cols; j++) {
+                    rotatedMatrix[cols - 1 - j][i] = matrix[i][j];
+                }
+            }
+        } else {
+            System.out.println("Invalid rotation direction. Please choose either clockwise or anti-clockwise.");
+        }
+
+        return rotatedMatrix;
+    }
+
+    public static void printMatrix(int[][] matrix) {
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
