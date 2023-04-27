@@ -1,0 +1,40 @@
+// Given two strings, check if they are anagrams of each other. An anagram is a word or phrase formed by rearranging the letters of another, such as "listen" and "silent". Return true if they are anagrams and false otherwise.
+
+import java.util.Arrays;
+
+public class AnagramChecker {
+public static void main(String[] args) {
+String s1 = "listen";
+String s2 = "silent";
+boolean isAnagram = checkIfAnagram(s1, s2);
+if (isAnagram) {
+System.out.println(s1 + " and " + s2 + " are anagrams.");
+} else {
+System.out.println(s1 + " and " + s2 + " are not anagrams.");
+}
+}
+
+    public static boolean checkIfAnagram(String s1, String s2) {
+        // If the two strings have different lengths, they can't be anagrams
+        if (s1.length() != s2.length()) {
+            return false;
+        }
+
+        // Convert the strings to char arrays and sort them
+        char[] s1Chars = s1.toCharArray();
+        char[] s2Chars = s2.toCharArray();
+        Arrays.sort(s1Chars);
+        Arrays.sort(s2Chars);
+
+        // Compare the sorted char arrays
+        for (int i = 0; i < s1Chars.length; i++) {
+            if (s1Chars[i] != s2Chars[i]) {
+                return false;
+            }
+        }
+
+        // If we reach this point, the strings are anagrams
+        return true;
+    }
+
+}
