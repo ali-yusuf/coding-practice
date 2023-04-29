@@ -1,0 +1,28 @@
+// frequency of each letter in a given string 
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class FrequencyOfEachLetter {
+    public static void main(String[] args) {
+        String inputString = "Hello, World!";
+        Map<Character, Integer> frequencyMap = new HashMap<>();
+
+        // iterate over each character in the string
+        for (char c : inputString.toCharArray()) {
+            // if the character is not already in the map, add it with frequency 1
+            if (!frequencyMap.containsKey(c)) {
+                frequencyMap.put(c, 1);
+            } 
+            // if the character is already in the map, increment its frequency
+            else {
+                frequencyMap.put(c, frequencyMap.get(c) + 1);
+            }
+        }
+
+        // print out the frequency of each character
+        for (char c : frequencyMap.keySet()) {
+            System.out.println(c + ": " + frequencyMap.get(c));
+        }
+    }
+}

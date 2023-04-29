@@ -1,0 +1,19 @@
+// Java program to Given a string that (may) be appended with a number at last. You need to find whether the length of string excluding that number is equal to that number. For example for “TechnoName10”, the answer is True as  TechnoName consist of 10 letters. The length of String is less than 10, 000.
+
+public class Main {
+    public static void main(String[] args) {
+        String str = "TechnoName10";
+        int num = 0;
+        int i = str.length() - 1;
+        int count =0;
+        while (i >= 0 && Character.isDigit(str.charAt(i))) {
+            num += (str.charAt(i) - '0') * Math.pow(10, str.length() - i - 1);
+            i--;
+            count++;
+        }
+        boolean result = (str.length() - count) == num;
+        System.out.println("Result: " + result);
+        System.out.println("Integer: " + num);
+       // System.out.println("Result: " + str.length()-count);
+    }
+}

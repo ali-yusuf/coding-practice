@@ -1,0 +1,14 @@
+// program to find a sting triplet HSL in a given string
+
+public class CountHSLTriplets {
+    public static void main(String[] args) {
+        String str = "HHSLSSLLSHSHLL";
+        int count = 0;
+        for (int i = 0; i < str.length() - 2; i++) {
+            if (str.charAt(i) == 'H' && str.charAt(i + 1) == 'S' && str.charAt(i + 2) == 'L') {
+                count++;
+            }
+        }
+        System.out.println("Number of HSL triplets in the string: " + count);
+    }
+}
