@@ -1,0 +1,119 @@
+// write a program that receives a word and some texts as inputs and find sort those texts in ascending order according to counter of that word in these text
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter a word: ");
+        String word = input.nextLine();
+
+        System.out.print("Enter the number of texts: ");
+        int numTexts = input.nextInt();
+
+        input.nextLine(); // Consume the newline character
+
+        String[] texts = new String[numTexts];
+        int[] counters = new int[numTexts];
+
+        // Read the texts and count the occurrence of the given word
+        for (int i = 0; i < numTexts; i++) {
+            System.out.print("Enter text " + (i+1) + ": ");
+            texts[i] = input.nextLine();
+            counters[i] = countWord(texts[i], word);
+        }
+
+        // Sort the texts in ascending order based on the counters
+        for (int i = 0; i < numTexts - 1; i++) {
+            for (int j = i+1; j < numTexts; j++) {
+                if (counters[i] > counters[j]) {
+                    // Swap the counters
+                    int tempCounter = counters[i];
+                    counters[i] = counters[j];
+                    counters[j] = tempCounter;
+
+                    // Swap the texts
+                    String tempText = texts[i];
+                    texts[i] = texts[j];
+                    texts[j] = tempText;
+                }
+            }
+        }
+
+        // Display the sorted texts
+        System.out.println("Sorted texts in ascending order based on the occurrence of the word '" + word + "':");
+        for (int i = 0; i < numTexts; i++) {
+            System.out.println((i+1) + ". " + texts[i] + " (occurrence: " + counters[i] + ")");
+        }
+    }
+
+    // Helper method to count the occurrence of a word in a text
+    public static int countWord(String text, String word) {
+        int count = 0;
+        int index = text.indexOf(word);
+        while (index != -1) {
+            count++;
+            index = text.indexOf(word, index + 1);
+        }
+        return count;
+    }
+}
+
+// My Approach using split method
+
+import java.util.*;
+
+// Java Program to Get the TreeSet Element By Index
+  
+import java.io.*;
+public class Main {
+    public static void Text(int n, String str)
+    {
+        String texts[]= new String[n];
+        int counter[] = new int[n];
+        int count = 0;
+        Scanner sc =  new Scanner(System.in);
+        // Read texts
+        System.out.println("Enter "+n+" text to find occurence of a word: ");
+        for(int i=0;i<n;i++){
+            texts[i] = sc.nextLine();
+        }
+        // find count of word and store its counter 
+        for(int i=0;i<n;i++){
+            String word[] = texts[i].split(" ");
+            for(int j=0;j<word.length;j++)
+            {
+                if(word[j].equals(str)){
+                    counter[i]++;
+                }
+            }
+        }
+        // Sort the texts in ascending order based on the counters
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = i+1; j < n; j++) {
+                if (counter[i] > counter[j]) {
+                    // Swap the counters
+                    int tempCounter = counter[i];
+                    counter[i] = counter[j];
+                    counter[j] = tempCounter;
+
+                    // Swap the texts
+                    String tempText = texts[i];
+                    texts[i] = texts[j];
+                    texts[j] = tempText;
+                }
+            }
+        }
+        
+        // Display the sorted texts
+        System.out.println("Sorted texts in ascending order based on the occurrence of the word '" + str + "':");
+        for (int i = 0; i < n; i++) {
+            System.out.println((i+1) + ". " + texts[i] + " (occurrence: " + counter[i] + ")");
+        }
+    }
+
+  public static void main(String args[]) { 
+     
+         Text(2, "java"); // method call
+   }
+}

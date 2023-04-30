@@ -1,0 +1,33 @@
+import java.util.*;
+
+// Java Program to Get the TreeSet Element By Index
+  
+import java.io.*;
+public class SetDemo {
+
+  public static void main(String args[]) { 
+      int count[] = {34, 22,10,60,30,22};
+     TreeSet<Integer> set = new TreeSet<Integer>();
+      try {
+         for(int i = 0; i < 5; i++) {
+            set.add(count[i]);
+         }
+         System.out.println(set);
+
+         //TreeSet sortedSet = new TreeSet<Integer>(set);
+         System.out.println("The sorted list is:");
+         System.out.println(set);
+
+         System.out.println("The First element of the set is: "+set.first());
+         System.out.println("The last element of the set is: "+set.last());
+      }
+      catch(Exception e) {}
+      int j=0;
+     for(int a : set )
+     count[j++] = a;
+     System.out.println("The sorted list assigning to array:");
+for(int i = 0; i < 5; i++) {
+            System.out.print(count[i]+ " ");
+         }
+   }
+}
