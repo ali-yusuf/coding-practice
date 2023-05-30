@@ -1,19 +1,20 @@
-import java.util.*;
+import java.util.TreeSet;
 
 // Java Program to Get the TreeSet Element By Index
   
-import java.io.*;
 public class SetDemo {
 
   public static void main(String args[]) { 
       int count[] = {34, 22,10,60,30,22};
      TreeSet<Integer> set = new TreeSet<Integer>();
       try {
-         for(int i = 0; i < 5; i++) {
-            set.add(count[i]);
+         // for(int i = 0; i < 5; i++) {
+         //    set.add(count[i]);
+         // }
+         for(int i: count) // for each loop
+         {
+            set.add(i);
          }
-         System.out.println(set);
-
          //TreeSet sortedSet = new TreeSet<Integer>(set);
          System.out.println("The sorted list is:");
          System.out.println(set);

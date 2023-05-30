@@ -1,0 +1,87 @@
+// all sorting algorithm
+import java.util.Scanner;
+public class Sort {
+    static void selctionsort(int input[])
+    {
+        int n=input.length,pass,loc,i,temp=0;
+        
+       for(pass=0;pass<=n-2;pass++)
+       {
+           loc=pass;
+           for(i=pass+1;i<=n-1;i++)
+           {
+               if(input[i]<input[loc])
+                   loc=i;
+           }
+           if(loc!=pass)
+           {
+               temp=input[pass];
+               input[pass]=input[loc];
+               input[loc]=temp;
+           }
+       }
+       System.out.println("Sorting using selection sort: ");
+        for(i=0;i<n;i++)
+            System.out.print(input[i]+" ");
+    }
+    static void bubblesort(int input[])
+    {
+    int pass,i,xchgs,temp;
+    int n=input.length;
+    for(pass=1;pass<=n-1;pass++)
+    {
+        xchgs=0;
+        for(i=0;i<=(n-1-pass);i++)
+        {
+            if(input[i]>input[i+1])
+            {
+                temp=input[i];
+                input[i]=input[i+1];
+                input[i+1]=temp;
+                xchgs=1;
+            }
+        }
+        if(xchgs==0)  // if array is already sorted loop will terminate
+            break;
+    }
+     System.out.println("Sorting using bubble sort: ");
+    for(i=0;i<n;i++)
+            System.out.print(input[i]+" ");
+    }
+     static void insertionsort(int input[])
+    {
+    int pass,i,temp;
+    int n=input.length;
+    for(pass=1;pass<=n-1;pass++)
+    {
+        temp=input[pass];
+        i=pass-1;
+        while(temp<input[i]&&i>=0)
+        {
+            input[i+1]=input[i];
+            i=i-1;
+        }
+        input[i+1]=temp;
+    }
+     System.out.println("Sorting using insertion sort: ");
+     for(i=0;i<n;i++)
+            System.out.print(input[i]+" ");
+    }
+    public static void main(String []args)
+    {
+        Scanner scan = new Scanner(System.in);
+         System.out.println("Enter total number and then array elements : ");
+        int n=scan.nextInt();
+        int a[]= new int[n];
+        for(int i=0;i<n;i++)
+        {
+            a[i]=scan.nextInt();
+        }
+       selctionsort(a);
+        System.out.println();
+       bubblesort(a);
+        System.out.println();
+       insertionsort(a);
+    }
+    
+}

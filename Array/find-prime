@@ -28,7 +28,7 @@ public class Main {
    public static boolean isPrime(int n){
        
        for(int i=2;i<Math.sqrt(n);i++){
-           if(n%i==0)
+           if(n%i==0 || n%2==0) // second condtion for even number since even number cant't be prime
            return false;
            else
            return true;

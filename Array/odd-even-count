@@ -1,0 +1,87 @@
+import static java.lang.Math.pow;
+import java.util.Scanner;
+
+
+public class CountOddEven {
+    public static void main(String []args)
+    {
+        Scanner scan= new Scanner(System.in);
+        int even=0,odd=0, n;
+         System.out.print(" how many number you want to enter \t: ");       
+        n=scan.nextInt();
+        double[] a = new double[n];
+       System.out.print(" enter the numbers\t: ");
+       for(int i=0;i<a.length;i++)
+       {
+           a[i]=scan.nextLong();
+           if(a[i]%2==0)
+               even++;
+           else
+               odd++;
+       }
+       System.out.println("Total odd numbers are \t: "+odd);
+           System.out.println("Total even numbers are \t: "+even);
+    }
+    
+}
+
+// All element is twice one element is single time
+/*progrm in which all the element occuring twice but an eleement occuring once.*/
+import java.io.*;
+import java.util.Scanner;
+
+class noRepeatElement {
+    public static void main(String []args)
+    {
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Enter iteration to test: ");
+        int t=scan.nextInt(); // enter iteration to test as 1
+       int temp1 []={44,55,45,55,44}; // all element twice except 45
+        while(t-->0)
+        {
+            // int n=scan.nextInt();
+            // int[] a= new int[n];
+            int temp=0;
+            for(int i=0;i<temp1.length;i++)
+            {
+                // a[i]=scan.nextInt();
+                temp^=temp1[i];
+               
+            }
+            
+            System.out.print(temp);
+        }
+        
+    }
+    
+}
+// Kth small element in a given array
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+class kthSmall {
+    public static void main(String []args)
+    {
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Enter iteration to test: ");
+        int t=scan.nextInt();
+        while(t-->0)
+        {
+             System.out.print("Enter total elements : ");
+            int n=scan.nextInt();
+            int[] a= new int[n];
+             System.out.print("Enter array elements : ");
+            for(int i=0;i<n;i++)
+            {
+                a[i]=scan.nextInt();
+            }
+             System.out.print("Enter K to get Kth small : ");
+            int k=scan.nextInt();
+            Arrays.sort(a);
+            System.out.print(a[k-1]);
+        }
+        
+    }
+    
+}

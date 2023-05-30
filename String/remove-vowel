@@ -28,3 +28,39 @@ public class RemoveVowels {
         return sb.toString();
     }
 }
+
+// Replace all vowels with #
+// Given a string, remove all the vowels from it and return the resulting string. For example, if the input string is "Hello World", the output should be "Hll Wrld".
+
+public class RemoveVowels {
+    public static void main(String[] args) {
+        String inputString = "Hello World";
+        String outputString = removeVowels(inputString);
+        System.out.println(outputString);
+    }
+    
+    public static String removeVowels(String s) {
+        // Define a string containing all vowels
+        String vowels = "AEIOUaeiou";
+        
+        // Create a StringBuilder object to store the output string
+        StringBuilder sb = new StringBuilder();
+        
+        // Iterate over each character in the input string
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            
+            // If the current character is not a vowel, append it to the output string
+            if (vowels.indexOf(c) == -1) {
+                sb.append(c);
+            }
+            else
+            {
+                sb.append("#");
+            }
+        }
+        
+        // Convert the StringBuilder object to a string and return it
+        return sb.toString();
+    }
+}

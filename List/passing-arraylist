@@ -1,0 +1,78 @@
+
+// There is an integer array  which does not contain more than two elements of the same value. How many distinct ascending triples () are present? 
+
+import java.util.*;
+
+public class Main {
+
+    public static int countTriples(int[] arr) {
+        int n = arr.length;
+        Arrays.sort(arr);
+        Set<List<Integer>> triples = new HashSet<>();
+        
+        for (int i = 0; i < n-2; i++) {
+            for (int j = i+1; j < n-1; j++) {
+                if (arr[j] > arr[i]) {
+                    for (int k = j+1; k < n; k++) {
+                        if (arr[k] > arr[j]) {
+                            triples.add(Arrays.asList(arr[i], arr[j], arr[k]));  // Adding a list into a list
+                            System.out.print(arr[i]+" "+ arr[j]+" "+ arr[k]);  // will pritn all tripletes
+                            System.out.println();
+                        }
+                    }
+                }
+            }
+        }
+        System.out.print(triples);
+        return triples.size();
+    }
+    
+    public static void main(String[] args) {
+        int[] arr = {5,5, 2, 2, 3, 4};
+        int count = countTriples(arr);
+        System.out.println("Count of ascending triples: " + count);
+    }
+}
+// some test fails in above code
+
+// Second Approach
+import java.util.*;
+
+public class Main {
+
+    public static long countTriples(List<Integer> d) {
+       int n =  d.size();
+    ArrayList<Integer>list=new ArrayList<>();
+    for(int i=0;i<n;i++)
+    {   
+    //    int d=sc.nextInt();
+        if(!list.contains(d.get(i)))
+        list.add(d.get(i));
+    }
+    long x=list.size();
+    long ans=(x-1)*(x-2);
+    //ans/=2;
+    ans-=2;
+    System.out.println(ans);
+    
+        return ans;
+    }
+    
+    public static void main(String[] args) {
+        ArrayList<Integer> arr = new ArrayList<>();
+        arr.add(1);
+         arr.add(1);
+          arr.add(5);
+           arr.add(4);
+            arr.add(3);
+             arr.add(6);
+              arr.add(6);
+               arr.add(5);
+                arr.add(9);
+                 arr.add(10);
+                  
+       
+        long count = countTriples(arr);
+        System.out.println("Count of ascending triples: " + count);
+    }
+}

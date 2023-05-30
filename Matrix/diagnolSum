@@ -37,3 +37,42 @@ public class MatrixDiagonalSum {
         System.out.println("Sum of diagonals: " + result);
     }
 }
+// diagonal difference 
+
+public class MatrixDiagonalSum {
+    public static int diagonalSum(int[][] matrix) {
+        int n = matrix.length;
+        int diagonal1Sum = 0;
+        int diagonal2Sum = 0;
+
+        // Iterate through the rows of the matrix
+        for (int i = 0; i < n; i++) {
+            // Add the element at the current row and column to diagonal1Sum
+            diagonal1Sum += matrix[i][i];
+            // Add the element at the current row and the opposite column to diagonal2Sum
+            diagonal2Sum += matrix[i][n - i - 1];
+        }
+
+        // Return the sum of the diagonals
+        return diagonal1Sum - diagonal2Sum;
+    }
+
+    public static void main(String[] args) {
+        int[][] matrix = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        // int[][] matrix = {
+        // {1, 0, 2, 3, 4 , 5, 6, 7, 8, 9},
+        // {1, 0, 2, 3, 4 , 5, 6, 7, 8, 9},
+        // {1, 0, 2, 3, 4 , 5, 6, 7, 8, 9},
+        // {1, 0, 2, 3, 4 , 5, 6, 7, 8, 9},
+        // {1, 0, 2, 3, 4 , 5, 6, 7, 8, 9},
+        // {1, 0, 2, 3, 4 , 5, 6, 7, 8, 9},
+        // {1, 0, 2, 3, 4 , 5, 6, 7, 8, 9},
+        // {1, 0, 2, 3, 4 , 5, 6, 7, 8, 9},
+        // {1, 0, 2, 3, 4 , 5, 6, 7, 8, 9},
+        // {1, 0, 2, 3, 4 , 5, 6, 7, 8, 9}
+            
+        // };
+        int result = diagonalSum(matrix);
+        System.out.println("Sum of diagonals: " + result);
+    }
+}

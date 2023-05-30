@@ -1,0 +1,23 @@
+// find if given word is a keyword or not
+
+ // Given a string, remove all the vowels from it and return the resulting string. For example, if the input string is "Hello World", the output should be "Hll Wrld".
+
+public class KeyWord {
+    public static void main(String[] args) {
+       Compare("iff");
+    }
+    // find if given word is a keyword or not
+
+ static void Compare(String input)
+    {
+    String given[]={"if","defer","else","while","switch","void","main","do","int","float","output","over","inner","for","on"};
+    boolean temp=false;
+    for(int i=0;i<given.length;i++)
+    if(input.equals(given[i]))
+    temp=true;
+        if(temp)
+        System.out.println("given word is a keyword");
+    else
+           System.out.println("given word is not  a keyword");
+    }
+}

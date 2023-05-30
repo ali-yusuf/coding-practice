@@ -26,3 +26,39 @@ public class FrequencyOfEachLetter {
         }
     }
 }
+
+// Highest frequent character if two letter have same frequency return 0;
+import java.util.HashMap;
+import java.util.Map;
+
+public class MaxOccurringCharacter {
+    public static char findMaxOccurringCharacter(String input) {
+        Map<Character, Integer> frequencyMap = new HashMap<>();
+        int maxFrequency = 0;
+        char maxChar = '0';
+
+        for (char c : input.toCharArray()) {
+            frequencyMap.put(c, frequencyMap.getOrDefault(c, 0) + 1);
+            if (frequencyMap.get(c) > maxFrequency) {
+                maxFrequency = frequencyMap.get(c);
+                maxChar = c;
+            } else if (frequencyMap.get(c) == maxFrequency) {
+                maxChar = '0'; // Multiple characters have the same highest frequency
+            }
+        }
+
+        return maxChar;
+    }
+
+    public static void main(String[] args) {
+        String input = "Hello World"; // Example input
+
+        char maxChar = findMaxOccurringCharacter(input);
+        if (maxChar == '0') {
+            System.out.println("Multiple characters occur with the same highest frequency");
+        } else {
+            System.out.println("Character with the highest frequency: " + maxChar);
+        }
+    }
+}
+

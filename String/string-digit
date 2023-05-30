@@ -7,9 +7,9 @@ public class Main {
         int i = str.length() - 1;
         int count =0;
         while (i >= 0 && Character.isDigit(str.charAt(i))) {
-            num += (str.charAt(i) - '0') * Math.pow(10, str.length() - i - 1);
+            num += (str.charAt(i) - '0') * Math.pow(10, count++);
             i--;
-            count++;
+           // count++;
         }
         boolean result = (str.length() - count) == num;
         System.out.println("Result: " + result);
