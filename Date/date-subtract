@@ -1,0 +1,85 @@
+// Subtract two dates 
+
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.Period;
+public class Main
+{
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+		
+        Date t;
+		LocalDate Doj =  LocalDate.of(2021, Month.APRIL, 8);
+		LocalDate today =  LocalDate.now();
+		Period age =  Period.between(Doj,today);
+	    int years = age.getYears();
+	    int months = age.getMonths();
+	    int days = age.getDays();
+		System.out.println("Totla experience as of "+today+"  years: "+years+" months: "+months+" days: "+days);
+	}
+}
+
+// format the date 
+import java.util.*;
+import java.text.*;
+
+public class DateDemo {
+
+   public static void main(String args[]) {
+      Date dNow = new Date( );
+      SimpleDateFormat ft = 
+      new SimpleDateFormat ("yyyy/MM/dd");
+String dt = ft.format(dNow);
+      System.out.println("Current Date: " + dt);
+      SimpleDateFormat ftt = 
+      new SimpleDateFormat ("dd/MM/yyyy");
+String dtt = ftt.format(dNow);
+      System.out.println("Current Date: " + dtt);
+      
+      System.out.println("Current Date: " + dt.equals(dtt));
+   }
+}
+
+// Date differnce in month and years not in days using custom method with string 
+import java.util.*;
+import java.text.*;
+
+public class DateDemo {
+
+   public static void main(String args[]) {
+      Date dNow = new Date( );
+      String dt  = "08/04/2021";
+      String joindate [] = dt.split("/");
+      System.out.println("Joining Date: " + dt);
+      SimpleDateFormat ftt = 
+      new SimpleDateFormat ("dd/MM/yyyy");
+      String dtt = ftt.format(dNow);
+      String datenow[] = dtt.split("/");
+      System.out.println("Current Date: " + dtt);
+      
+      int years = Integer.parseInt(datenow[2])-Integer.parseInt(joindate[2]);  // string to integer converter 
+       int months = Integer.parseInt(datenow[1])-Integer.parseInt(joindate[1]);
+        int days = Integer.parseInt(datenow[0])-Integer.parseInt(joindate[0]);
+      
+      System.out.println("Total Experience : \n" + years +" years \n"+months+" months \n"+days+" days ");
+   }
+}
+
+// char to integer converter 
+// Subtract two dates 
+
+public class Main
+{
+	public static void main(String[] args) {
+	
+	char one = '1';
+	int oneint = one-'0'; // chare to int
+		System.out.println("Hello World "+one+"  "+oneint);
+		if(oneint==1){
+		    System.out.println("integer");
+		}
+		if(one==1){
+		    System.out.println("Not an integer");
+		}
+	}
+}

@@ -1,0 +1,48 @@
+
+// Given a string, find the longest substring without repeating characters. For example, if the input string is "abcabcbb", the output should be "abc".
+
+import java.util.*;
+
+public class LongestSubstring {
+    public static void main(String[] args) {
+        String inputString = "abcabcbb";
+        String longestSubstring = findLongestSubstring(inputString);
+        System.out.println(longestSubstring);
+    }
+    
+    public static String findLongestSubstring(String s) {
+        // Create a HashSet to store the unique characters in the current substring
+        Set<Character> set = new HashSet<>();
+        
+        // Create two pointers to define the current substring
+        int left = 0;
+        int right = 0;
+        
+        // Initialize variables to store the maximum length and substring
+        int maxLength = 0;
+        String longestSubstring = "";
+        
+        // Iterate over each character in the string
+        while (right < s.length()) {
+            char c = s.charAt(right);
+            
+            // If the current character is not in the set, add it and update maxLength and longestSubstring
+            if (!set.contains(c)) {
+                set.add(c);
+                right++;
+                if (set.size() > maxLength) {
+                    maxLength = set.size();
+                    longestSubstring = s.substring(left, right);
+                }
+            }
+            // If the current character is in the set, remove characters from the left of the substring until it is unique
+            else {
+                set.remove(s.charAt(left));
+                left++;
+            }
+        }
+        
+        // Return the longest substring
+        return longestSubstring;
+    }
+}

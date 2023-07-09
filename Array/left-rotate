@@ -1,0 +1,75 @@
+//Write a Java program to rotate an array of integers to the left by a given number of positions.
+class Main 
+{
+    static void lefRotate(int arr[], int rotate)
+    {
+        int n= arr.length;
+        int k=rotate;
+         k = k % n; // to handle k > n cases
+	int temp[] = new int[rotate];
+       for(int i=0;i<k;i++)
+       { 
+           temp[i]=arr[i];  // assign those element which will be rotated
+       }   
+        for(int j=0;j<n-rotate;j++)
+           {
+              arr[j]=arr[k];  // left shift remaing element 
+              k++;
+           }
+           k=0;
+       for(int i=n-rotate;i<n;i++)
+       {
+           arr[i]=temp[k];   // append the values from temp array to original array
+           k++;
+       }
+        for(int i=0;i<n;i++)
+       {
+        System.out.print("  "+arr[i]);
+       }
+    }
+    public static void main(String[] args) {
+        int arr [] = {1,4,5,0,2};
+        lefRotate(arr, 2);
+    }
+}
+
+//Write a Java program to rotate an array of integers to the right by a given number of positions.
+// {1, 2, 3, 4, 5};   output = {5, 4, 1, 2, 3,};
+import java.util.Arrays;
+
+public class ArrayRotation {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5};
+        int rotateBy = 3;
+
+        System.out.println("Original Array: " + Arrays.toString(arr));
+        System.out.println("Rotating Array by " + rotateBy + " positions to the right...");
+
+        rotateArray(arr, rotateBy);
+
+        System.out.println("Rotated Array: " + Arrays.toString(arr));
+    }
+
+    public static void rotateArray(int[] arr, int k) {
+        int n = arr.length;
+        k = k % n; // to handle k > n cases
+
+        // Reverse the entire array
+        reverse(arr, 0, n - 1); // 5 4 3 2 1 
+        // Reverse the first k elements
+        reverse(arr, 0, k - 1);   // 3 4 5 2 1
+
+        // Reverse the remaining n-k elements
+        reverse(arr, k, n - 1);  // 3 4 5 1 2
+    }
+
+    public static void reverse(int[] arr, int start, int end) {
+        while (start < end) {
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start++;
+            end--;
+        }
+    }
+}

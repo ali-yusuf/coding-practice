@@ -1,0 +1,64 @@
+// frequency of each letter in a given string 
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class FrequencyOfEachLetter {
+    public static void main(String[] args) {
+        String inputString = "Hello, World!";
+        Map<Character, Integer> frequencyMap = new HashMap<>();
+
+        // iterate over each character in the string
+        for (char c : inputString.toCharArray()) {
+            // if the character is not already in the map, add it with frequency 1
+            if (!frequencyMap.containsKey(c)) {
+                frequencyMap.put(c, 1);
+            } 
+            // if the character is already in the map, increment its frequency
+            else {
+                frequencyMap.put(c, frequencyMap.get(c) + 1);
+            }
+        }
+
+        // print out the frequency of each character
+        for (char c : frequencyMap.keySet()) {
+            System.out.println(c + ": " + frequencyMap.get(c));
+        }
+    }
+}
+
+// Highest frequent character if two letter have same frequency return 0;
+import java.util.HashMap;
+import java.util.Map;
+
+public class MaxOccurringCharacter {
+    public static char findMaxOccurringCharacter(String input) {
+        Map<Character, Integer> frequencyMap = new HashMap<>();
+        int maxFrequency = 0;
+        char maxChar = '0';
+
+        for (char c : input.toCharArray()) {
+            frequencyMap.put(c, frequencyMap.getOrDefault(c, 0) + 1);
+            if (frequencyMap.get(c) > maxFrequency) {
+                maxFrequency = frequencyMap.get(c);
+                maxChar = c;
+            } else if (frequencyMap.get(c) == maxFrequency) {
+                maxChar = '0'; // Multiple characters have the same highest frequency
+            }
+        }
+
+        return maxChar;
+    }
+
+    public static void main(String[] args) {
+        String input = "Hello World"; // Example input
+
+        char maxChar = findMaxOccurringCharacter(input);
+        if (maxChar == '0') {
+            System.out.println("Multiple characters occur with the same highest frequency");
+        } else {
+            System.out.println("Character with the highest frequency: " + maxChar);
+        }
+    }
+}
+

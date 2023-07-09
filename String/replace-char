@@ -1,0 +1,10 @@
+//  Write a program to remove 7 and 56 from given string.
+
+public class Main {
+    public static void main(String[] args) {
+        String inputString = "This is a string with 7 and 56 in it";
+        String outputString = inputString.replaceAll("7", "").replaceAll("56", "");
+        System.out.println(outputString);
+        System.out.println("hello world");
+    }
+}

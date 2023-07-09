@@ -1,0 +1,84 @@
+// program to most frequent element in an array
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] arr1 = {1, 2, 3, 4, 5, 2, 3, 6, 3};
+        System.out.println("arr1: " + Arrays.toString(arr1));
+        System.out.println("most frequency element is : "+mostFrequent(arr1));
+    }
+
+    public static int mostFrequent(int[] arr1) {
+        int count=0, frequency=0, frequent=0;
+       for(int i=0;i<arr1.length;i++)
+       {
+           for(int j=0;j<arr1.length;j++)
+           {
+               if(arr1[i]==arr1[j])
+               count++;
+           }
+           if(count>frequency)
+           {
+               frequency=count;
+               frequent= arr1[i];
+           }
+           count=0;
+       }
+
+        return frequent;
+    }
+}
+
+// program to find frequency of each element
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] arr1 = {1, 2, 3, 4, 5, 2, 3, 6, 3};
+        System.out.println("arr1: " + Arrays.toString(arr1));
+        frequency(arr1);
+    }
+
+    public static void frequency(int[] arr1) {
+        int count=0,frequent=0;
+       for(int i=0;i<arr1.length;i++)
+       {
+           
+           for(int j=0;j<arr1.length;j++)
+           {
+               if(arr1[i]==arr1[j])
+               count++;
+           }
+          
+        System.out.println("frequency of "+arr1[i]+" = "+count);
+           count=0;
+       }
+    }
+}
+// Frequency of each element using hashmap without repetition
+import java.util.HashMap;
+import java.util.Map;
+
+public class FrequencyCounter {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 1, 2, 3, 5, 1, 2, 3, 6, 7, 7, 7, 8, 9, 9, 9, 9}; // Input array
+        Map<Integer, Integer> frequencyMap = findFrequency(arr); // Call the method to find frequency
+
+        // Print the frequency of each element
+        for (Map.Entry<Integer, Integer> entry : frequencyMap.entrySet()) {
+            System.out.println("Element " + entry.getKey() + " occurs " + entry.getValue() + " times.");
+        }
+    }
+
+    public static Map<Integer, Integer> findFrequency(int[] arr) {
+        Map<Integer, Integer> frequencyMap = new HashMap<>();
+        for (int num : arr) {
+            if (frequencyMap.containsKey(num)) {
+                frequencyMap.put(num, frequencyMap.get(num) + 1);
+            } else {
+                frequencyMap.put(num, 1);
+            }
+        }
+        return frequencyMap;
+    }
+}

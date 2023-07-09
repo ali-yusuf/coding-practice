@@ -1,0 +1,83 @@
+// Matrix Sorting: Write a program to sort the rows or columns of a matrix in ascending or descending order based on a given criteria. The input will be a matrix, the sorting criteria, and the order (ascending or descending), and the output should be the sorted matrix.
+
+import java.util.Arrays;
+
+public class MatrixSorting {
+    public static void sortMatrix(int[][] matrix, String criteria, String order) {
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+
+        // Sort rows
+        if (criteria.equalsIgnoreCase("row")) {
+            for (int i = 0; i < rows; i++) {
+                if (order.equalsIgnoreCase("asc")) {
+                    Arrays.sort(matrix[i]);
+                } else if (order.equalsIgnoreCase("desc")) {
+                    Arrays.sort(matrix[i]);
+                    reverseArray(matrix[i]);
+                }
+            }
+        }
+        // Sort columns
+        else if (criteria.equalsIgnoreCase("column")) {
+            int[] column = new int[rows];
+            for (int i = 0; i < cols; i++) {
+                for (int j = 0; j < rows; j++) {
+                    column[j] = matrix[j][i];
+                }
+                if (order.equalsIgnoreCase("asc")) {
+                    Arrays.sort(column);
+                } else if (order.equalsIgnoreCase("desc")) {
+                    Arrays.sort(column);
+                    reverseArray(column);
+                }
+                for (int j = 0; j < rows; j++) {
+                    matrix[j][i] = column[j];
+                }
+            }
+        } else {
+            System.out.println("Invalid sorting criteria.");
+        }
+    }
+
+    public static void reverseArray(int[] arr) {
+        int start = 0;
+        int end = arr.length - 1;
+        while (start < end) {
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start++;
+            end--;
+        }
+    }
+
+    public static void main(String[] args) {
+        int[][] matrix = {{5, 2, 7},
+                          {1, 4, 3},
+                          {9, 6, 8}};
+
+        System.out.println("Original Matrix:");
+        printMatrix(matrix);
+
+        // Sort rows in ascending order
+        sortMatrix(matrix, "row", "asc");
+        System.out.println("Matrix sorted by rows in ascending order:");
+        printMatrix(matrix);
+
+        // Sort columns in descending order
+        sortMatrix(matrix, "column", "desc");
+        System.out.println("Matrix sorted by columns in descending order:");
+        printMatrix(matrix);
+    }
+
+    public static void printMatrix(int[][] matrix) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+}

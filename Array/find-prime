@@ -1,0 +1,81 @@
+
+
+// write a program to display prime numbers from a given list of integers using java
+import java.util.ArrayList;
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<Integer> val =  new ArrayList<Integer>();
+        ArrayList<Integer> prime =  new ArrayList<Integer>();
+        
+        val.add(2);
+        val.add(3);
+        val.add(13);
+        val.add(15);
+        val.add(19);
+        
+        for(int num : val){
+            if(isPrime(num))
+            prime.add(num);
+        }
+        // print as a list
+        System.out.println(prime);
+        
+    // print using array
+        for(int prm: prime)
+        System.out.println(prm);
+    }
+    // check if prime
+   public static boolean isPrime(int n){
+       
+       for(int i=2;i<Math.sqrt(n);i++){
+           if(n%i==0 || n%2==0) // second condtion for even number since even number cant't be prime
+           return false;
+           else
+           return true;
+       }
+       return false;
+   }
+}
+
+
+// program to find nth prime 
+public class NthPrimeNumber {
+    public static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+
+        for (int i = 2; i * i <= num; i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static int findNthPrime(int n) {
+        if (n <= 0) {
+            throw new IllegalArgumentException("n should be a positive integer.");
+        }
+
+        int count = 0;
+        int number = 2;
+
+        while (count < n) {
+            if (isPrime(number)) {
+                count++;
+            }
+            number++;
+        }
+
+        return number - 1;
+    }
+
+    public static void main(String[] args) {
+        int n = 10; // Example input
+
+        int nthPrime = findNthPrime(n);
+        System.out.println("The " + n + "th prime number is: " + nthPrime);
+    }
+}

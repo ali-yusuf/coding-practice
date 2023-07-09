@@ -1,0 +1,34 @@
+// java program to find second largest element using bubble sort
+
+class HelloWorld 
+{
+    static int secondLarge(int arr[])
+    {
+        int n= arr.length;
+        int count =0;
+		// we are using bubble sort
+       for(int i=0;i<n-1;i++)
+       {
+           count++;
+           for(int j=0;j<n-i-1;j++)
+           {
+               if(arr[j]>arr[j+1])
+               {
+                   int temp = arr[j];
+                   arr[j]=arr[j+1];
+                   arr[j+1]=temp;
+               }
+           }
+           if(count==2)
+           {
+               return arr[n-2];
+           }
+       }
+       return 0;
+    }
+    public static void main(String[] args) {
+        int arr [] = {1,4,5,0,2};
+        System.out.println(secondLarge(arr));
+    }
+}
+
